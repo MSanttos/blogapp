@@ -1,0 +1,9 @@
+footer.text-center.text-lg-start.text-white.my-5.footer {
+  position: fixed !important;
+  margin: 10px auto !important;
+}
+.jumbotron.style{
+  background: #e9ecef;
+  padding: 30px;
+  border-radius: 5px;
+}

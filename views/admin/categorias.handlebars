@@ -1,0 +1,37 @@
+<h2>Lista de categorias: </h2>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th># ID</th>
+          <th>Nome</th>
+          <th>Slug</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each categorias}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{nome}}</td>
+            <td>{{slug}}</td>
+            <td>
+              <form action="/admin/categorias/delete" method="post">
+                <input type="hidden" name="id" value="{{_id}}">
+                <a href="/admin/categorias/edit/{{_id}}" class="btn btn-primary">Editar</a>
+                <button type="submit" class="btn btn-danger">Deletar</button>
+              </form>
+            </td>
+          </tr>
+          {{else}}
+            <tr>
+              <td colspan="4" align="center">Nenhuma categoria encontrada!</td>
+            </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a href="/admin/categorias/add"><button class="btn btn-primary">Nova categoria</button></a>

@@ -1,0 +1,43 @@
+<h2>Lista de postagens: </h2>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th># ID</th>
+          <th>Título</th>
+          <th>Slug</th>
+          <th>Descrição</th>
+          <th>Conteúdo</th>
+          <th>Categoria</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each postagens}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{titulo}}</td>
+            <td>{{slug}}</td>
+            <td>{{descricao}}</td>
+            <td>{{conteudo}}</td>
+            <td>{{categoria.nome}}</td>
+            <td>
+              <form action="/admin/postagens/deletar" method="post">
+                <input type="hidden" name="id" value="{{_id}}">
+                <a href="/admin/postagens/edit/{{_id}}" class="btn btn-primary">Editar</a>
+                <button type="submit" class="btn btn-danger">Deletar</button>
+              </form>
+            </td>
+          </tr>
+          {{else}}
+            <tr>
+              <td colspan="7" align="center">Nenhuma categoria encontrada!</td>
+            </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+<a href="/admin/postagens/add"><button class="btn btn-primary">Nova postagem</button></a>

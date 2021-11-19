@@ -1,0 +1,29 @@
+<h1>{{categoria.nome}}</h1>
+
+{{#each postagens}}
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">{{titulo}}</h5>
+      <p class="card-text">{{descricao}}</p>
+      {{!-- <a href="/admin/postagens/{{id}}" class="btn btn-primary">Ver mais</a> --}}
+      <hr>
+      <div class="btn-card mt-4">
+        <a href="/postagem/{{slug}}" class="btn btn-primary">Saiba mais</a>
+      </div>
+    </div> 
+  </div>
+{{else}}
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">{{titulo}}</h5>
+      <p class="card-text">{{descricao}}</p>
+      <br>
+      <p>Nenhuma postagem encontrada!</p>
+      <br>
+      <hr>
+      <div class="btn-card mt-4">
+        <a href="/" class="btn btn-primary">Voltar</a>
+      </div>
+    </div> 
+  </div>
+{{/each}}

@@ -1,0 +1,26 @@
+<div class="jumbotron style">
+  <h1 class="display-4">Bem-vindo!</h1>
+  <p class="lead">App desenvolvido com Node.js + Express + MongoDB.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Crie sua conta!</a>
+</div>
+<hr>
+<h2>Postagens recentes: </h2>
+
+{{#each postagens}}
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">{{titulo}}</h5>
+      <p class="card-text">{{descricao}}</p>
+      {{!-- <a href="/admin/postagens/{{id}}" class="btn btn-primary">Ver mais</a> --}}
+      <hr>
+      <small>Categoria: {{categoria.nome}}</small>
+      <div class="btn-card mt-4">
+        <a href="/postagem/{{slug}}" class="btn btn-primary">Saiba mais</a>
+      </div>
+    </div> 
+  </div>
+{{else}}
+  <p>Nenhuma postagem encontrada!</p>
+{{/each}}
