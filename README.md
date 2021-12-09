@@ -1,3 +1,6 @@
+# deploy
+👉 https://blogprod.herokuapp.com/
+
 # npm init
 👉 inicializa package.json
 
