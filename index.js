@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const handlebars = require('express-handlebars')
 //const bodyParser = require('body-parser')
-const port = process.env.PORT ||3030
+const port = process.env.PORT ||3001
 const admin = require('./routes/admin')
 const path = require('path')
 const mongoose = require('mongoose')
@@ -56,8 +56,12 @@ app.set('view engine', 'handlebars')
 //body-parser
 //app.use(bodyParser.urlencoded({ extended: true }))
 //app.use(bodyParser.json())
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.urlencoded({ limit: '500mb', extended: true }))
+app.use(express.json({ limit: '500mb', extended: true }))
+
+// original
+// app.use(express.urlencoded({ extended: true }))
+// app.use(express.json())
 
 //mongoose
 mongoose.Promise = global.Promise

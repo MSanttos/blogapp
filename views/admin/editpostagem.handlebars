@@ -21,8 +21,12 @@
       <input class="form-control" id="descricao" name="descricao" placeholder="Descrição" value={{postagem.descricao}}>
 
       <label for="conteudo">Conteúdo: </label>
-      <textarea class="form-control" id="conteudo" name="conteudo" placeholder="Conteúdo">{{postagem.conteudo}}</textarea>
+      {{!-- <textarea class="form-control" id="conteudo" name="conteudo" placeholder="Conteúdo">{{postagem.conteudo}}</textarea> --}}
       
+      {{!-- editor --}}
+      <div id="editor" name="editor" placeholder="Conteúdo">{{{postagem.conteudo}}}</div>
+      <input type="hidden" name="conteudo" id="conteudo">
+
       <label for="categoria">Categoria: </label>
       <select class="form-control" id="categoria" name="categoria">
         {{#each categorias}}
@@ -36,3 +40,35 @@
     </form>
   </div>
 </div>
+{{!-- editor --}}
+<script>
+  window.onload = function() {
+    var editor = new FroalaEditor('#editor', {
+      events: {
+        "image.beforeUpload": function(files) {
+        var editor = this;
+          if (files.length) {
+            // Create a File Reader.
+            var reader = new FileReader();
+            // Set the reader to insert images when they are loaded.
+            reader.onload = function(e) {
+              var result = e.target.result;
+              editor.image.insert(result, null, null, editor.image.get());
+            };
+            // Read image as base64.
+            reader.readAsDataURL(files[0]);
+          }
+          editor.popups.hideAll();
+          // Stop default upload chain.
+          return false;
+        }
+      }
+    })
+
+    const editorHtml = document.getElementById('editor')
+
+    editorHtml.addEventListener('DOMSubtreeModified', function (e) {
+      document.getElementById('conteudo').value = editor.html.get()
+    })
+  }
+</script>
